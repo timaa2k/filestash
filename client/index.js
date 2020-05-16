@@ -11,6 +11,7 @@ import './assets/css/reset.scss';
 window.addEventListener("DOMContentLoaded", () => {
     const className = 'ontouchstart' in window ? 'touch-yes' : 'touch-no';
     document.body.classList.add(className);
+    window.URL_PREFIX = document.baseURI.slice(window.location.origin.length, -1);
 
     const $loader = document.querySelector("#n-lder");
 
@@ -78,7 +79,7 @@ if ("serviceWorker" in navigator) {
             // see: https://github.com/mickael-kerjean/filestash/issues/255
             return
         }
-        navigator.serviceWorker.register("/sw_cache.js").catch(function(err){
+        navigator.serviceWorker.register("sw_cache.js").catch(function(err){
             console.error("ServiceWorker registration failed:", err);
         });
     });
@@ -88,7 +89,7 @@ if ("serviceWorker" in navigator) {
 window.overrides = {};
 function setup_xdg_open(){
     return new Promise((done, err) => {
-        load("/overrides/xdg-open.js", function(error) {
+        load("overrides/xdg-open.js", function(error) {
             if(error) return err(error);
             done()
         });

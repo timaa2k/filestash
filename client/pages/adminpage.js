@@ -91,7 +91,6 @@ const SideMenu = (props) => {
               <Icon name="arrow_left" style={{"opacity": 0}}/>
               <Icon name="loading" />
             </div> :
-            <NavLink to="/" className="header">
               <Icon name="arrow_left" />
               <img src="/assets/logo/android-chrome-512x512.png" />
             </NavLink>
